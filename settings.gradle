@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "daily10minutes_20200927"
