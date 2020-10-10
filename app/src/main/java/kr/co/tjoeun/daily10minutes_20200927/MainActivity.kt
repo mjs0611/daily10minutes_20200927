@@ -1,11 +1,11 @@
 package kr.co.tjoeun.daily10minutes_20200927
 
-import kr.co.tjoeun.daily10minutes_20200927.utils.ServerUtil
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kr.co.tjoeun.daily10minutes_20200927.utils.ServerUtil
 import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
@@ -22,8 +22,10 @@ class MainActivity : BaseActivity() {
         signUpBtn.setOnClickListener {
 
             val myIntent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
 
         }
+
 
         loginBtn.setOnClickListener {
 
