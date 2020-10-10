@@ -10,15 +10,15 @@ class ServerUtil {
 //    화면(액티비티)의 입장에서, 서버응답이 돌아왔을때 어떤 행동을 실행할지
 //    행동 지침을 담아주기 위한 인터페이스 (가이드북/매뉴얼) 정의
 
-    interface JsonResponseHandler{
-        fun onResponse(json : JSONObject)
+    interface JsonResponseHandler {
+        fun onResponse(json: JSONObject)
     }
 
     companion object {
 
         val HOST_URL = "http://15.164.153.174"
 
-        fun postRequestLogin(id:String, pw:String, handler:JsonResponseHandler?) {
+        fun postRequestLogin(id: String, pw: String, handler: JsonResponseHandler?) {
 
             val client = OkHttpClient()
 
