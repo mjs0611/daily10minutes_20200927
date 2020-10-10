@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minutes_20200927
 
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.idEdt
 import kotlinx.android.synthetic.main.activity_main.pwEdt
@@ -30,6 +31,27 @@ class SignUpActivity : BaseActivity() {
             ServerUtil.putRequestSignUp(inputId, inputPw, inputNickName, object : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
 
+//                    가입 성공 / 실패 처리
+
+                    val codeNum = json.getInt("code")
+
+                    if (codeNum == 200) {
+//                        ㅎ회원가입에 성공했습니다. 토스트 출력 + 가입화면 종료 (로그인 화면 복귀)
+
+                        runOnUiThread{
+                            Toast.makeText(mContext, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+
+                    }
+                    else {
+//                        실패 사유를 서버가 알려주는대로 토스트로 띄워주기만
+                        val message = json.getString("message")
+
+                        runOnUiThread{
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
 
                 }
