@@ -2,9 +2,6 @@ package kr.co.tjoeun.daily10minutes_20200927
 
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.idEdt
-import kotlinx.android.synthetic.main.activity_main.pwEdt
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kr.co.tjoeun.daily10minutes_20200927.utils.ServerUtil
 import org.json.JSONObject
@@ -24,7 +21,37 @@ class SignUpActivity : BaseActivity() {
 
             val inputEmail = idEdt.text.toString()
 
-            ServerUtil.getRequestEmailCheck(inputEmail, null)
+            ServerUtil.getRequestEmailCheck(inputEmail, object : ServerUtil.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
+
+//                    연습문제
+//                    이메일 사용 가능 : "사용해도 좋은 이메일입니다." 문구 변경
+//                    불가 : "사용할 수 없는 이메일입니다. 다른 이메일로 다시 검사해주세요." 문구 변경
+//                    Toast X, 텍스트뷰 문구 변경
+
+                    val code = json.getInt("code")
+
+                    if (code == 200) {
+
+                        runOnUiThread{
+                            Toast.makeText(mContext, "사용해도 좋은 이메일입니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    else {
+
+                        runOnUiThread{
+                            Toast.makeText(mContext, "사용할 수 없는 이메일입니다. 다른 이메일로 다시 검사해주세요.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+
+//                    응용문제
+//                    검사를 통과하고 나서 이메일 입력값이 변경되면 재검사 요구
+//                    이메일 입력값 변경 감지 (구글링) => "중복 검사를 해주세요." 문구 변경
+
+
+                }
+            })
         }
 
         signUpBtn.setOnClickListener {
