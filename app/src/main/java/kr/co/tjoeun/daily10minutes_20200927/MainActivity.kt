@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minutes_20200927.utils.ServerUtil
 
 class MainActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,8 +18,12 @@ class MainActivity : BaseActivity() {
 
         loginBtn.setOnClickListener {
 
-            val inputID = idEdt.text.toString()
-            val inputpw = pwEdt.text.toString()
+            val inputId = idEdt.text.toString()
+            val inputPw = pwEdt.text.toString()
+
+//            ServerUtil을 이용해서 실제 로그인 시도
+
+            ServerUtil.postRequestLogin(inputId, inputPw)
 
         }
 
