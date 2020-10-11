@@ -16,6 +16,10 @@ class Project : Serializable {
 
     var proofMethod = "" // 인증 방법 - String
 
+//    내 참가상태 : 한번도 신청 안했으면 null => null 대입 가능하도록
+//    기본값도 null로 세팅
+    var myLastStatus : String? = null
+
 
 //    JSONObject를 넣으면 => 파싱을 통해서 => Project 객체로 변환해주는 (단순)기능.
 
@@ -36,6 +40,12 @@ class Project : Serializable {
             p.ongoingUserCount = json.getInt("ongoing_users_count")
 
             p.proofMethod = json.getString("proof_method")
+
+//            내 현재 진행 상태 추가 파싱 => null 값 / my_last_status이 없는 경우가 아닐때만 파싱
+//            안전 장치 추가 (null 체크)
+            if (json.isNull("my_last_status")) {
+                p.myLastStatus = json.getString("my_last_status")
+            }
 
 
 
