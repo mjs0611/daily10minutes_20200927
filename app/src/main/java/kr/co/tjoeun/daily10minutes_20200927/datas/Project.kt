@@ -5,18 +5,18 @@ import java.io.Serializable
 
 class Project : Serializable {
 
-//    서버에서 내려주는 참여가능 프로젝트의 데이터(하위정보) 를 담기 위한 변수들
+//    서버에서 내려주는 참여가능 프로젝트의 데이터(하위정보) 를 담기 위한 변수들.
 
-    var id = 0 // id는 Int라고 명시
-    var title = "" // title은 String이라고 명시
+    var id = 0 // id는 Int라고 명시.
+    var title = "" // title은 String이라고 명시.
     var imageURL = ""
     var desc = ""
 
-//    JSONOnject를 넣으면 => 파싱을 통해서 => Project 객체로 변환해주는 (단순)기능
+//    JSONObject를 넣으면 => 파싱을 통해서 => Project 객체로 변환해주는 (단순)기능.
 
     companion object {
 
-        fun getProjectFromJSON(json:JSONObject) :Project {
+        fun getProjectFromJSON(json:JSONObject) : Project {
 
 //            기본적인 Project 객체 생성
             val p = Project()
@@ -27,7 +27,8 @@ class Project : Serializable {
             p.imageURL = json.getString("img_url")
             p.desc = json.getString("description")
 
-//            완성된 Project 객체를 결과로 리턴
+
+//            완성된 Project 객체를 결과로 리턴.
             return p
 
         }

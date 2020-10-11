@@ -34,7 +34,6 @@ class ViewProjectDetailActivity : BaseActivity() {
 
         getProjectInfoFromServer()
 
-
     }
 
 //    현재 참여 인원 등 최신정보 (프로젝트 상세 정보)를 서버에서 가져오는 함수
@@ -48,16 +47,14 @@ class ViewProjectDetailActivity : BaseActivity() {
 
                 val projectObj = dataObj.getJSONObject("project")
 
-//                mProject 내용물 전부 교체
+//                mProject 내용물 전부 교체.
 
                 mProject = Project.getProjectFromJSON(projectObj)
 
             }
 
-
         })
 
     }
-
 
 }

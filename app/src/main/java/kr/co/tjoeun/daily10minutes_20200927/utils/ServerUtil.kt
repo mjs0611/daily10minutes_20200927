@@ -224,7 +224,7 @@ class ServerUtil {
 //            POST / PUT 등은 formData 를 이용하지만, GET에서는 주소에 적는다.
 
 //            URL에 파라미터들을 쉽게 첨부하도록 도와주는 URL가공기 생성.
-            val urlBuilder = "${HOST_URL}/project/%{projectId}".toHttpUrlOrNull()!!.newBuilder()
+            val urlBuilder = "${HOST_URL}/project/${projectId}".toHttpUrlOrNull()!!.newBuilder()
 //            URL 가공기를 이용해서 필요한 파라미터들을 쉽게 첨부.
 //            urlBuilder.addEncodedQueryParameter("email", emailAddress)
 
