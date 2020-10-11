@@ -1,6 +1,5 @@
 package kr.co.tjoeun.daily10minutes_20200927
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_project_member.*
 import kr.co.tjoeun.daily10minutes_20200927.adapters.ProjectMemberAdapter
@@ -35,7 +34,7 @@ class ViewProjectMemberActivity : BaseActivity() {
         getMembersFromServer()
 
         mAdapter = ProjectMemberAdapter(mContext, R.layout.user_list_item, mMemberList)
-        projectMemberListView.adapter = mAdapter
+        projectMeberListView.adapter = mAdapter
 
     }
 

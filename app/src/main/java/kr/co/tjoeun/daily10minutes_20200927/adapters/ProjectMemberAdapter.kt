@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200927.R
 import kr.co.tjoeun.daily10minutes_20200927.datas.User
 
@@ -35,6 +36,9 @@ class ProjectMemberAdapter(
 
         userNickNameTxt.text = userData.nickName
         userEmailTxt.text = userData.email
+
+//        사용자 프사중 0번째 프사를 => 이미지뷰에 반영
+        Glide.with(mContext).load(userData.profileImageList[0]).into(userProfileImg)
 
         return row
     }
