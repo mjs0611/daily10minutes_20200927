@@ -16,6 +16,7 @@ class Project : Serializable {
 
     var proofMethod = "" // 인증 방법 - String
 
+
 //    JSONObject를 넣으면 => 파싱을 통해서 => Project 객체로 변환해주는 (단순)기능.
 
     companion object {
@@ -35,6 +36,7 @@ class Project : Serializable {
             p.ongoingUserCount = json.getInt("ongoing_users_count")
 
             p.proofMethod = json.getString("proof_method")
+
 
 
 //            완성된 Project 객체를 결과로 리턴.
