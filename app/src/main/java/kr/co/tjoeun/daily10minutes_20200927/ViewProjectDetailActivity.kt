@@ -32,6 +32,8 @@ class ViewProjectDetailActivity : BaseActivity() {
 
         Glide.with(mContext).load(mProject.imageURL).into(projectImg)
 
+        proofMethodTxt.text = mProject.proofMethod
+
         getProjectInfoFromServer()
 
     }
@@ -55,6 +57,8 @@ class ViewProjectDetailActivity : BaseActivity() {
 
 //                    새로 갱신된 mProjcet를 이용해 화면에 새로 데이터 반영
                     userCountTxt.text = "${mProject.ongoingUserCount}명"
+
+                    proofMethodTxt.text = mProject.proofMethod
 
                 }
             }
