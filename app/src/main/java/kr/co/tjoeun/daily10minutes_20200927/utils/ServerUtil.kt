@@ -256,7 +256,7 @@ class ServerUtil {
 
         }
 
-        fun getRequestProjectMemberById(context:Context, projectId:Int, handler: JsonResponseHandler?) {
+        fun getRequestProjectMembersById(context:Context, projectId:Int, handler: JsonResponseHandler?) {
 
             val client = OkHttpClient()
 

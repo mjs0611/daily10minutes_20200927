@@ -1,8 +1,8 @@
 package kr.co.tjoeun.daily10minutes_20200927
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_project_member.*
-import kr.co.tjoeun.daily10minutes_20200927.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10minutes_20200927.adapters.ProjectMemberAdapter
 import kr.co.tjoeun.daily10minutes_20200927.datas.Project
 import kr.co.tjoeun.daily10minutes_20200927.datas.User
