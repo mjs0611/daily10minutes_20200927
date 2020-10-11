@@ -1,5 +1,6 @@
 package kr.co.tjoeun.daily10minutes_20200927
 
+import android.content.Intent
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
@@ -19,6 +20,14 @@ class ViewProjectDetailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        viewMembersBtn.setOnClickListener {
+
+            val myIntent = Intent(mContext, ViewProjectMemberActivity::class.java)
+            myIntent.putExtra("project", mProject)
+            startActivity(myIntent)
+
+        }
 
     }
 
