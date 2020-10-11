@@ -1,5 +1,6 @@
 package kr.co.tjoeun.daily10minutes_20200927.utils
 
+import android.content.Context
 import android.util.Log
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -177,7 +178,7 @@ class ServerUtil {
 
        }
 
-        fun getRequestProjectList(handler: JsonResponseHandler?) {
+        fun getRequestProjectList(context: Context, handler: JsonResponseHandler?) {
 
             val client= OkHttpClient()
 
@@ -199,7 +200,7 @@ class ServerUtil {
             val request = Request.Builder()
                 .url(urlString)
                 .get()
-//                 .header() // 필요시 첨부
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context)) // 필요시 첨부
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
