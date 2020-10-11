@@ -135,27 +135,27 @@ class ServerUtil {
 
         fun getRequestEmailCheck(emailAddress: String, handler: JsonResponseHandler?) {
 
-            val client= OkHttpClient()
+            val client = OkHttpClient()
 
-//            어느 주소로 가야하는가? 동일
-//            차이점 : 주소를 적을 때 => 어떤 데이터가 첨부되는지(파라미터)도 같이 적어야함
-//            POST / PUT 등은 formData를 이용하지만, GET에서는 주소에 적는다
+//            어느 주소로 가야하는가? 동일.
+//            차이점 : 주소를 적을때 => 어떤 데이터가 첨부되는지 (파라미터)도 같이 적어야함.
+//            POST / PUT 등은 formData 를 이용하지만, GET에서는 주소에 적는다.
 
-//            url에 파라미터들을 쉽게 첨부하도록 도와주는 URL 가공기 생성
-            val urlBuilder = "$(HOST_URL}/email_check".toHttpUrlOrNull()!!.newBuilder()
-//            URL 가공기를 이용해서 필요한 파라미터들을 쉽게 첨부
-            urlBuilder.addEncodedQueryParameter("email", "emailAddress")
+//            URL에 파라미터들을 쉽게 첨부하도록 도와주는 URL가공기 생성.
+            val urlBuilder = "${HOST_URL}/email_check".toHttpUrlOrNull()!!.newBuilder()
+//            URL 가공기를 이용해서 필요한 파라미터들을 쉽게 첨부.
+            urlBuilder.addEncodedQueryParameter("email", emailAddress)
 
-//            가공이 끝난 URL을 urlString으로 완성
+//            가공이 끝난 URL을 urlString으로 완성.
             val urlString = urlBuilder.build().toString()
 
 //            임시 확인 : 어떻게 url이 완성되었는지 확인
-            Log.d("완성된 URL", urlString)
+            Log.d("완성된URL", urlString)
 
             val request = Request.Builder()
                 .url(urlString)
                 .get()
-//                 .header() // 필요시 첨부
+//                .header() // 필요시 첨부
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
@@ -166,36 +166,32 @@ class ServerUtil {
                 override fun onResponse(call: Call, response: Response) {
                     val bodyString = response.body!!.string()
                     val jsonObj = JSONObject(bodyString)
-
                     Log.d("서버응답본문", jsonObj.toString())
-
                     handler?.onResponse(jsonObj)
-
                 }
 
             })
 
+        }
 
-       }
+        fun getRequestProjectList(context:Context, handler: JsonResponseHandler?) {
 
-        fun getRequestProjectList(context: Context, handler: JsonResponseHandler?) {
+            val client = OkHttpClient()
 
-            val client= OkHttpClient()
+//            어느 주소로 가야하는가? 동일.
+//            차이점 : 주소를 적을때 => 어떤 데이터가 첨부되는지 (파라미터)도 같이 적어야함.
+//            POST / PUT 등은 formData 를 이용하지만, GET에서는 주소에 적는다.
 
-//            어느 주소로 가야하는가? 동일
-//            차이점 : 주소를 적을 때 => 어떤 데이터가 첨부되는지(파라미터)도 같이 적어야함
-//            POST / PUT 등은 formData를 이용하지만, GET에서는 주소에 적는다
+//            URL에 파라미터들을 쉽게 첨부하도록 도와주는 URL가공기 생성.
+            val urlBuilder = "${HOST_URL}/project".toHttpUrlOrNull()!!.newBuilder()
+//            URL 가공기를 이용해서 필요한 파라미터들을 쉽게 첨부.
+//            urlBuilder.addEncodedQueryParameter("email", emailAddress)
 
-//            url에 파라미터들을 쉽게 첨부하도록 도와주는 URL 가공기 생성
-            val urlBuilder = "$(HOST_URL}/project".toHttpUrlOrNull()!!.newBuilder()
-//            URL 가공기를 이용해서 필요한 파라미터들을 쉽게 첨부
-//            urlBuilder.addEncodedQueryParameter("email", "emailAddress")
-
-//            가공이 끝난 URL을 urlString으로 완성
+//            가공이 끝난 URL을 urlString으로 완성.
             val urlString = urlBuilder.build().toString()
 
 //            임시 확인 : 어떻게 url이 완성되었는지 확인
-            Log.d("완성된 URL", urlString)
+            Log.d("완성된URL", urlString)
 
             val request = Request.Builder()
                 .url(urlString)
@@ -211,15 +207,11 @@ class ServerUtil {
                 override fun onResponse(call: Call, response: Response) {
                     val bodyString = response.body!!.string()
                     val jsonObj = JSONObject(bodyString)
-
                     Log.d("서버응답본문", jsonObj.toString())
-
                     handler?.onResponse(jsonObj)
-
                 }
 
             })
-
 
         }
 
