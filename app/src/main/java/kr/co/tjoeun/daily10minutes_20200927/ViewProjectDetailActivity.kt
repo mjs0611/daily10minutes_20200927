@@ -24,7 +24,7 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
-        applyBtn.setOnClickListener{
+        applyBtn.setOnClickListener {
 
             val alert = AlertDialog.Builder(mContext)
             alert.setTitle("프로젝트 참가 신청")
@@ -41,27 +41,43 @@ class ViewProjectDetailActivity : BaseActivity() {
 
                         if (code == 200) {
 
+                            runOnUiThread {
+                                Toast.makeText(mContext, "프로젝트에 참가했습니다.", Toast.LENGTH_SHORT).show()
+
+//                                참가 신청 성공시, 변경된 프로젝트 상태를 파싱해서 새로 반영
+//                                mProject를 갈아엎자
+
+                                val dataObj = json.getJSONObject("data")
+                                val projectObj = dataObj.getJSONObject("project")
+
+                                mProject = Project.getProjectFromJSON(projectObj)
+
+//                                참여자 수 등 데이터 새로 써주자.
+
+                                refreshUIProjectData()
+
+
+                            }
 
                         }
                         else {
                             val message = json.getString("message")
 
-                            runOnUiThread(
+                            runOnUiThread {
                                 Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
-                            )
-
+                            }
                         }
 
                     }
 
                 })
 
+
             })
             alert.setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
                 Toast.makeText(mContext, "준비가 되면 도전해주세요.", Toast.LENGTH_SHORT).show()
             })
             alert.show()
-
 
         }
 
@@ -72,7 +88,6 @@ class ViewProjectDetailActivity : BaseActivity() {
             startActivity(myIntent)
 
         }
-
 
     }
 
@@ -109,16 +124,23 @@ class ViewProjectDetailActivity : BaseActivity() {
 
                 runOnUiThread {
 
-//                    새로 갱신된 mProjcet를 이용해 화면에 새로 데이터 반영
-                    userCountTxt.text = "${mProject.ongoingUserCount}명"
-
-                    proofMethodTxt.text = mProject.proofMethod
+                    refreshUIProjectData()
 
                 }
+
             }
 
         })
 
+    }
+
+//    mProject의 데이터가 바뀌면 실행하게 해서, 데이터 수정을 하나의 코드로 관리하는 함수.
+
+    fun refreshUIProjectData() {
+        //                    새로 갱신된 mProject를 이용해 화면에 새로 데이터 반영
+        userCountTxt.text = "${mProject.ongoingUserCount}명"
+
+        proofMethodTxt.text = mProject.proofMethod
     }
 
 }
