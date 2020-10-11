@@ -8,9 +8,35 @@
     tools:context=".ViewProjectMemberActivity">
 
     <ListView
-        android:id="@+id/projectMeberList"
+        android:id="@+id/projectMeberListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/ic_launcher"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="사용자 닉네임" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사용자 이메일" />
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
