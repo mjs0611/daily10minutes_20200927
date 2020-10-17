@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200927.R
 import kr.co.tjoeun.daily10minutes_20200927.datas.Proof
+import java.text.SimpleDateFormat
 
 class ProofAdapter(
     val mContext: Context,
@@ -43,6 +44,10 @@ class ProofAdapter(
 
         Glide.with(mContext).load(proofData.writer.profileImageList[0]).into(writeProfileImg)
         writeNickNameTxt.text = proofData.writer.nickName
+
+//        인증글 시간정보 => 2020년 5월 8일 오후 3시 1분 양식으로 출력
+        val sdf = SimpleDateFormat("yyyy년 M월 d일 a h시 m분")
+        writtenDateTimeTxt.text = sdf.format(proofData.proofTime.time)
 
         return row
     }
