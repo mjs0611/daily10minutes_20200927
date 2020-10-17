@@ -28,7 +28,7 @@ class ViewProjectDetailActivity : BaseActivity() {
 
 //            포기 신청 API 호출 - DELETE 메쏘드 예제
 
-            ServerUtil.DeleteRequestGiveUpProject(mContext, mProject.id, object : ServerUtil.JsonResponseHandler {
+            ServerUtil.deleteRequestGiveUpProject(mContext, mProject.id, object : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
 
                     val code = json.getInt("code")

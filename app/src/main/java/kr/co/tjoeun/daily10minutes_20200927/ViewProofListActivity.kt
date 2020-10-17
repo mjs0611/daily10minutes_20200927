@@ -80,7 +80,7 @@ class ViewProofListActivity : BaseActivity() {
         mProofAdapter = ProofAdapter(mContext, R.layout.proof_list_item, mProofList)
         proofListView.adapter = mProofAdapter
 
-//        today / sdf를 이용해서 오늘날짜의 게시글 목록 가져오기
+//        today / sdf를 이용해서, 오늘날짜의 게시글 목록 가져오기
 
         getProofListFromServerByDate(sdf.format(today.time))
 
@@ -105,16 +105,12 @@ class ViewProofListActivity : BaseActivity() {
                 for (i in    0 until proofsArr.length()) {
 //                    JSONObject 추출 => Proof 형태로 변경 => mProofList에 추가
                     mProofList.add(Proof.getProofFromJson(proofsArr.getJSONObject(i)))
-                    }
-
+                }
 
 //                리스트뷰어댑터에게 새로고침
                 runOnUiThread {
 
                     mProofAdapter.notifyDataSetChanged()
-
-                }
-
 
                 }
 
