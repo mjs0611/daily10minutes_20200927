@@ -76,6 +76,21 @@ class ProofAdapter(
             likeBtn.setTextColor(mContext.resources.getColor(R.color.darkgray))
         }
 
+        if (proofData.isMyLike) {
+//            res 폴더의 자원으로 배경 설정 : setBackgroundResource
+            replyBtn.setBackgroundResource(R.drawable.black_border_box)
+
+//            res 폴더의 자원으로 글씨 색 설정 : 제공되는 함수 X
+//            (Context의 도움을 받아서) 직접 res폴더로 가서 => 그 안의 color값 추출
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.black))
+        }
+        else {
+            replyBtn.setBackgroundResource(R.drawable.gray_border_box)
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.darkgray))
+        }
+
+
+
 //        좋아요 갯수
 
         likeBtn.text = "좋아요 ${proofData.likeCount}개"
