@@ -5,6 +5,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class Proof {
+    fun add(proofFromJson: Proof) {
+
+    }
+
     var id = 0
     var content = ""
 
