@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200927.R
 import kr.co.tjoeun.daily10minutes_20200927.datas.Proof
 
@@ -39,6 +40,9 @@ class ProofAdapter(
         val replyBtn = row.findViewById<Button>(R.id.replyBtn)
 
         contentTxt.text = proofData.content
+
+        Glide.with(mContext).load(proofData.writer.profileImageList[0]).into(writeProfileImg)
+        writeNickNameTxt.text = proofData.writer.nickName
 
         return row
     }
