@@ -98,12 +98,16 @@ class ViewProofListActivity : BaseActivity() {
                 for (i in    0 until proofsArr.length()) {
 //                    JSONObject 추출 => Proof 형태로 변경 => mProofList에 추가
                     mProofList.add(Proof.getProofFromJson(proofsArr.getJSONObject(i)))
-                }
+                    }
+
 
 //                리스트뷰어댑터에게 새로고침
                 runOnUiThread {
 
                     mProofAdapter.notifyDataSetChanged()
+
+                }
+
 
                 }
 

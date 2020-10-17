@@ -13,6 +13,9 @@ class Proof {
     var id = 0
     var content = ""
 
+    var isMyLike = false
+    var likeCount = 0
+
     //    사진 주소 목록
     val imageList = ArrayList<String>()
 
@@ -30,6 +33,9 @@ class Proof {
 
             proof.id = json.getInt("id")
             proof.content = json.getString("content")
+
+            proof.isMyLike = json.getBoolean("my_like")
+            proof.likeCount = json.getInt("like_count")
 
 //            인증글 파싱할때, 작성자 정보도 파싱하자
             proof.writer = User.getUserFromJSON(json.getJSONObject("user"))
