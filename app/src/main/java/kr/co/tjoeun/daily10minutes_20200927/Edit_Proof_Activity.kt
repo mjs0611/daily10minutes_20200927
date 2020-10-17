@@ -1,10 +1,9 @@
 
 package kr.co.tjoeun.daily10minutes_20200927
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class EditProofActivity : BaseActivity() {
+class Edit_Proof_Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
