@@ -34,21 +34,20 @@
                 android:id="@+id/titleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:text="프로젝트 제목" />
 
             <TextView
                 android:id="@+id/descTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="프로젝트 설명" />
 
         </LinearLayout>
-
 
     </FrameLayout>
 
@@ -56,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp" >
+        android:padding="15dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,7 +76,7 @@
                 android:id="@+id/userCountTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10" />
+                android:text="10명" />
 
             <TextView
                 android:layout_width="0dp"
@@ -108,24 +107,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/applyBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="참여 신청하기"/>
+                android:text="참여 신청하기" />
 
             <Button
                 android:id="@+id/giveUpBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="중도 포기하기"/>
+                android:text="중도 포기하기" />
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/viewProofBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="인증글 보러가기" />
+
     </LinearLayout>
 
 </LinearLayout>
