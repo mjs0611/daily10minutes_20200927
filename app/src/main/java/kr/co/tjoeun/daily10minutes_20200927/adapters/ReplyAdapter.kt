@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import kr.co.tjoeun.daily10minutes_20200927.R
 import kr.co.tjoeun.daily10minutes_20200927.datas.Reply
 
@@ -24,6 +26,13 @@ class ReplyAdapter(
         }
 
         val row = tempRow!!
+
+        val replyData = mList[position]
+
+        val userProfileImg = row.findViewById<ImageView>(R.id.userProfileImg)
+        val userNickNameTxt = row.findViewById<TextView>(R.id.userNickNameTxt)
+        val userProfileImg = row.findViewById<ImageView>(R.id.userProfileImg)
+        val userProfileImg = row.findViewById<ImageView>(R.id.userProfileImg)
 
         return row
     }
