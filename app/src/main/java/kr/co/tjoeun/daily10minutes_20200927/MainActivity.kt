@@ -3,8 +3,10 @@ package kr.co.tjoeun.daily10minutes_20200927
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minutes_20200927.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10minutes_20200927.datas.Project
@@ -23,6 +25,10 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         setupEvents()
         setValues()
+
+//        FCM 서버에 등록된 기기토큰값 확인
+        Log.d("디바이스토큰", FirebaseInstanceId.getInstance().token!!)
+
     }
 
     override fun setupEvents() {
@@ -39,18 +45,16 @@ class MainActivity : BaseActivity() {
 
         }
 
-
-        logoutBtn.setOnClickListener{
-
-//            연습문제 : 바로 로그아웃이 아니라, 진짜 로그아웃할건지 물어보고 처리
+        logoutBtn.setOnClickListener {
 
 //            로그아웃 버튼이 눌리면? 로그아웃 => 기기에 저장된 토큰값 삭제
+//            연습문제 : 바로 로그아웃이 아니라, 진짜 로그아웃할건지 물어보고 처리.
 
             val alert = AlertDialog.Builder(mContext)
             alert.setTitle("로그아웃")
             alert.setMessage("정말 로그아웃 하시겠습니까?")
             alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
-                ContextUtil.setLoginUserToken(mContext,"")
+                ContextUtil.setLoginUserToken(mContext, "")
 
 //            다시 로딩화면으로 돌아가기
                 val myIntent = Intent(mContext, SplashActivity::class.java)
@@ -60,7 +64,6 @@ class MainActivity : BaseActivity() {
             })
             alert.setNegativeButton("취소", null)
             alert.show()
-
 
         }
 
@@ -74,15 +77,16 @@ class MainActivity : BaseActivity() {
 
 //        노티 아이콘 보여야함
         notiImg.visibility = View.VISIBLE
-        getNotiCountFromSercer()
+        getNotiCountFromServer()
 
     }
 
 //    서버에서 안읽은 알림이 몇개인지 가져오는 기능
 
-    fun getNotiCountFromSercer() {
+    fun getNotiCountFromServer() {
 
         ServerUtil.getRequestNotiCount(mContext, object : ServerUtil.JsonResponseHandler {
+
             override fun onResponse(json: JSONObject) {
 
                 val dataObj = json.getJSONObject("data")
@@ -99,8 +103,7 @@ class MainActivity : BaseActivity() {
                         notiCountTxt.visibility = View.VISIBLE
                         notiCountTxt.text = notiCount.toString()
                     }
-                 }
-
+                }
 
             }
 
