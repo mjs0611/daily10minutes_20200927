@@ -74,6 +74,37 @@ class MainActivity : BaseActivity() {
 
 //        노티 아이콘 보여야함
         notiImg.visibility = View.VISIBLE
+        getNotiCountFromSercer()
+
+    }
+
+//    서버에서 안읽은 알림이 몇개인지 가져오는 기능
+
+    fun getNotiCountFromSercer() {
+
+        ServerUtil.getRequestNotiCount(mContext, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(json: JSONObject) {
+
+                val dataObj = json.getJSONObject("data")
+                val notiCount = dataObj.getInt("unread_noti_count")
+
+//                알림 0개 : 빨간 점 숨김
+//                하나라도 있다 : 보여주기 + 갯수 반영
+
+                runOnUiThread {
+                    if (notiCount == 0) {
+                        notiCountTxt.visibility = View.GONE
+                    }
+                    else {
+                        notiCountTxt.visibility = View.VISIBLE
+                        notiCountTxt.text = notiCount.toString()
+                    }
+                 }
+
+
+            }
+
+        })
 
     }
 

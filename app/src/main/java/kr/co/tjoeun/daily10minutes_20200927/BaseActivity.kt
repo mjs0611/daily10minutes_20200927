@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10minutes_20200927
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,6 +11,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 //    커스텀 액션바에 만들어둔 화면 요소들
     lateinit var notiImg : ImageView
+    lateinit var notiCountTxt : TextView
 
     val mContext = this
 
@@ -53,6 +55,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 //    액션바 xnl에 있는 뷰들을 => Lateinit var 변수에 연결 (코틀린에서 사용 가능)
     notiImg = myActionBar.customView.findViewById(R.id.notiImg)
+    notiCountTxt = myActionBar.customView.findViewById(R.id.notiCountTxt)
 
     }
 
