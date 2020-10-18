@@ -20,7 +20,7 @@
             android:gravity="center_vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/userProfileImg"
+                android:id="@+id/writerProfileImg"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 tools:src="@mipmap/ic_launcher"
@@ -83,12 +83,14 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/replyContentEdt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="댓글을 입력해주세요"/>
 
         <Button
+            android:id="@+id/inputBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="입력" />
