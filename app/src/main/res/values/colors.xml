@@ -9,5 +9,6 @@
     <color name="darkgray">#808080</color>
     <color name="red">#FF0000</color>
     <color name="LightGray">#EFEFEF</color>
+    <color name="textGray">#B0B0B0</color>
 
 </resources>
