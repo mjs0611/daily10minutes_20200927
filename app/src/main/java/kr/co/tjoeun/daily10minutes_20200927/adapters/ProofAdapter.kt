@@ -11,14 +11,11 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200927.R
 import kr.co.tjoeun.daily10minutes_20200927.ViewProofReplyListActivity
-import kr.co.tjoeun.daily10minutes_20200927.datas.Project
 import kr.co.tjoeun.daily10minutes_20200927.datas.Proof
-import kr.co.tjoeun.daily10minutes_20200927.datas.User
 import kr.co.tjoeun.daily10minutes_20200927.utils.ServerUtil
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.min
 
 class ProofAdapter(
     val mContext: Context,
@@ -95,7 +92,7 @@ class ProofAdapter(
         else if (diffTime < 7 * 24 * 60 * 60 * 1000) {
 //            1주일 이내
             val day = diffTime / 1000 / 60 / 60 / 24
-            writtenDateTimeTxt.text = "${day}시간 전"
+            writtenDateTimeTxt.text = "${day}일 전"
         }
         else {
 //            1주일이 넘어가는 경우 - 날짜 양식 가공
@@ -127,7 +124,7 @@ class ProofAdapter(
         }
         else {
             likeBtn.setBackgroundResource(R.drawable.gray_border_box)
-            likeBtn.setTextColor(mContext.resources.getColor(R.color.darkGray))
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.darkgray))
         }
 
 //        좋아요 갯수
