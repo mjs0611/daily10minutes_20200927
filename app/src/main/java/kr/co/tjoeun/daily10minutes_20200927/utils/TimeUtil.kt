@@ -34,7 +34,7 @@ class TimeUtil {
             val myPhoneTimeZone = now.timeZone
 
 //            세계 표준시와의 시차
-            val timeOffset = myPhoneTimeZone.rawOffset / 1000 / 60 / 60 // 시차를 밀리초단위로 알려줌
+            val timeOffset = myPhoneTimeZone.rawOffset / 1000 / 60 / 60 // 시차를  밀리초단위로 알려줌
 
 //            현재시간의 시차를 보정 (계산된 시차만큼 더해주자)
             now.add(Calendar.HOUR, -timeOffset)
