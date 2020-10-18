@@ -20,7 +20,7 @@ class ReplyAdapter(
         var tempRow = convertView
 
         if (tempRow == null) {
-            tempRow = inf.inflate(R.layout.project_list_item, null)
+            tempRow = inf.inflate(R.layout.reply_list_item, null)
         }
 
         val row = tempRow!!
