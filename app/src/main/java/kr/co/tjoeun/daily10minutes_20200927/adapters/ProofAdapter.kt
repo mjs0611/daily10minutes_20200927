@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.util.TimeUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +49,7 @@ class ProofAdapter(
         writerNickNameTxt.text = proofData.writer.nickName
 
 //        인증글 시간정보 => TimeUtil 기능 활용
-        writtenDateTimeTxt.text = TimeUtil.getTimeAgoByCalendar
+        writtenDateTimeTxt.text = TimeUtil.getTimeAgoByCalendar(proofData.proofTime)
 
 //        인증글의 이미지가 0개 : 이미지뷰 숨김
 //        그렇지 않다 (1개 이상) : 이미지뷰 보여주기 + Glide 이미지 세팅 (편의상 0번째)
